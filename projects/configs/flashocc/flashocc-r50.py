@@ -97,7 +97,9 @@ model = dict(
 
 # Data
 dataset_type = 'NuScenesDatasetOccpancy'
-data_root = 'data/nuscenes/'
+# data_root = 'data/nuscenes/'
+data_root = '/home/qiaofeng/datasets/nuscenes/'
+
 file_client_args = dict(backend='disk')
 
 bda_aug_conf = dict(
