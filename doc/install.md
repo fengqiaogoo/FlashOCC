@@ -11,9 +11,9 @@ pip install mmsegmentation==0.25.0
 sudo apt-get install python3-dev 
 sudo apt-get install libevent-dev
 sudo apt-get groupinstall 'development tools'
-export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export CUDA_ROOT=/usr/local/cuda
+export PATH=/usr/local/cuda-11.1/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-11.1/lib64:$LD_LIBRARY_PATH
+export CUDA_ROOT=/usr/local/cuda-11.1
 pip install pycuda
 
 pip install lyft_dataset_sdk
