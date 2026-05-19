@@ -127,6 +127,9 @@ def main():
     if hasattr(cfg, 'plugin'):
         if cfg.plugin:
             import importlib
+            import sys
+            # Add repo root to sys.path so that 'projects' package can be found
+            sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             if hasattr(cfg, 'plugin_dir'):
                 plugin_dir = cfg.plugin_dir
                 _module_dir = os.path.dirname(plugin_dir)

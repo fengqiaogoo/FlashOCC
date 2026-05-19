@@ -3,6 +3,7 @@
 ```shell
 # single gpu
 python tools/train.py $config
+python tools/train.py projects/configs/flashocc/flashocc-r50.py
 # multiple gpu
 ./tools/dist_train.sh $config num_gpu
 ```
