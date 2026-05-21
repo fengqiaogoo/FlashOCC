@@ -254,10 +254,15 @@ def parse_args():
         help='Version of nuScenes dataset')
     parser.add_argument('--draw-gt', action='store_true')
     parser.add_argument(
+        '--config',
+        type=str,
+        default=None,
+        help='Config file path (read data_root from it)')
+    parser.add_argument(
         '--root_path',
         type=str,
         default='./data/nuscenes',
-        help='Path to nuScenes dataset')
+        help='Path to nuScenes dataset (overrides config data_root)')
     parser.add_argument(
         '--save_path',
         type=str,
@@ -279,12 +284,22 @@ def parse_args():
 
 def main():
     args = parse_args()
+
+    # Read data_root from config file if provided
+    if args.config is not None:
+        from mmcv import Config
+        cfg = Config.fromfile(args.config)
+        data_root = cfg.data_root
+        print('data_root read from config: %s' % data_root)
+    else:
+        data_root = args.root_path
+
     # load predicted results
     results_dir = args.res
 
     # load dataset information
     info_path = \
-        args.root_path + '/bevdetv2-nuscenes_infos_%s.pkl' % args.version
+        data_root + '/bevdetv2-nuscenes_infos_%s.pkl' % args.version
     dataset = pickle.load(open(info_path, 'rb'))
     # prepare save path and medium
     vis_dir = args.save_path
@@ -321,7 +336,7 @@ def main():
         gt_occ_path = info['occ_path']
 
         pred_occ = np.load(pred_occ_path)['pred']
-        gt_data = np.load(os.path.join(args.root_path, gt_occ_path, 'labels.npz'))
+        gt_data = np.load(os.path.join(data_root, gt_occ_path, 'labels.npz'))
         voxel_label = gt_data['semantics']
         lidar_mask = gt_data['mask_lidar']
         camera_mask = gt_data['mask_camera']

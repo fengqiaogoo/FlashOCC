@@ -12,6 +12,7 @@ python tools/train.py projects/configs/flashocc/flashocc-r50.py
 ```shell
 # single gpu
 python tools/test.py $config $checkpoint --eval mAP
+python tools/test.py projects/configs/flashocc/flashocc-r50.py work_dirs/flashocc-r50/latest.pth --eval mAP
 # multiple gpu
 ./tools/dist_test.sh $config $checkpoint num_gpu --eval mAP
 # ray-iou metric

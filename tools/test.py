@@ -158,6 +158,9 @@ def main():
     # import modules from plguin/xx, registry will be updated
     if hasattr(cfg, 'plugin'):
         if cfg.plugin:
+            # Add repo root to sys.path so that 'projects' package can be found
+            import sys
+            sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             import importlib
             if hasattr(cfg, 'plugin_dir'):
                 plugin_dir = cfg.plugin_dir
