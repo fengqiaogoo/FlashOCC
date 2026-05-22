@@ -14,6 +14,7 @@
 * Please note that the FPS here is measured with A100 GPU (PyTorch fp32 backend).
 
 ## News
+- **2025.01.22** Our latest exploration on sparse representation: ![SuperOcc](https://github.com/Yzichen/SuperOcc)
 - **2024.09.16** Technical Report: FlashOcc can be insert to Bevdet with 1.1ms consumption while facilitating each other.[![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2409.11160)
 - **2024.09.16** [Selected as reference algorithm for occupancy on horizon J6E/M](https://zhuanlan.zhihu.com/p/720461546)
 - **2024.06.10** Release the code for Panoptic-FlashOCC
